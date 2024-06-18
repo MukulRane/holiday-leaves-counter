@@ -15,7 +15,7 @@ const Day = ({ day, updateStatus }) => {
   const handleStatus = (type) => {
     const newStatus = status === type ? '' : type;
     setStatus(newStatus);
-    const newHours = newStatus === '' ? inputValue : '';
+    const newHours = newStatus === '' ? inputValue : '0';
     setInputValue(newHours);
     updateStatus(day.date, newStatus, newHours);
   };
@@ -50,6 +50,12 @@ const Day = ({ day, updateStatus }) => {
     return date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' });
   };
 
+  const isWeekend = () => {
+    const date = new Date(day.date);
+    const dayOfWeek = date.getDay();
+    return dayOfWeek === 0 || dayOfWeek === 6;
+  };
+
   return (
     <div className="day">
       <div className="day-header" style={{ backgroundColor: 'lightgrey', fontWeight: 'bold' }}>
@@ -72,7 +78,7 @@ const Day = ({ day, updateStatus }) => {
                 onKeyPress={handleBlurOrEnter}
                 style={{ borderColor: 'grey' }}
               />
-              {status === '' && (
+              {!isWeekend() && status === '' && (
                 <>
                   <button onClick={() => handleStatus('L')} className="status-btn">L</button>
                   <button onClick={() => handleStatus('H')} className="status-btn">H</button>
