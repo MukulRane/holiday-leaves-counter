@@ -18,7 +18,7 @@ const Header = ({ year, month, setYear, setMonth }) => {
         Month:
         <select value={month} onChange={(e) => setMonth(e.target.value)}>
           {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map((month, index) => (
-            <option key={month} value={index + 1}>
+            <option key={month} value={index}>
               {month}
             </option>
           ))}

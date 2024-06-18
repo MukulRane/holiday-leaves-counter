@@ -42,10 +42,14 @@ const Day = ({ day, updateStatus }) => {
     }
   };
 
+  const formatDateHeader = () => {
+    return day.date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' });
+  };
+
   return (
     <div className="day">
       <div className="day-header" style={{ backgroundColor: 'lightgrey', fontWeight: 'bold' }}>
-        {`${day.name} ${day.date}`}
+        {formatDateHeader()}
       </div>
       <div className="day-body" style={{ backgroundColor: 'white' }}>
         <div className="input-wrapper">
