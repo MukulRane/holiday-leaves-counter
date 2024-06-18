@@ -1,38 +1,42 @@
 .App {
+  font-family: Arial, sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  margin: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.day {
+  border: 1px solid black;
 }
 
-.App-link {
-  color: #61dafb;
+.day-header {
+  background-color: lightgrey;
+  font-weight: bold;
+  padding: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.day-body {
+  background-color: white;
+  padding: 5px;
+}
+
+.summary {
+  margin-top: 20px;
+}
+
+input {
+  width: 60px;
+  margin-right: 5px;
+}
+
+button {
+  margin-right: 5px;
 }

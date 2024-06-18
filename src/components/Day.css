@@ -1,0 +1,25 @@
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.status-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.status-btn + .status-btn {
+  right: 30px; /* Adjust based on button width */
+}
