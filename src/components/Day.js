@@ -43,7 +43,11 @@ const Day = ({ day, updateStatus }) => {
   };
 
   const formatDateHeader = () => {
-    return day.date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' });
+    if (day.name === 'Total Hours') {
+      return 'Total Hours';
+    }
+    const date = new Date(day.date);
+    return date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' });
   };
 
   return (
@@ -53,21 +57,27 @@ const Day = ({ day, updateStatus }) => {
       </div>
       <div className="day-body" style={{ backgroundColor: 'white' }}>
         <div className="input-wrapper">
-          <input
-            type="text"
-            value={status === 'L' ? 'LEAVE' : status === 'H' ? 'HOLIDAY' : inputValue}
-            placeholder="0.00"
-            readOnly={status !== ''}
-            onKeyDown={handleKeyDown}
-            onChange={handleChange}
-            onBlur={handleBlurOrEnter}
-            onKeyPress={handleBlurOrEnter}
-            style={{ borderColor: 'grey' }}
-          />
-          {status === '' && (
+          {day.name === 'Total Hours' ? (
+            <div className="total-hours">{day.hours || '0.00'}</div>
+          ) : (
             <>
-              <button onClick={() => handleStatus('L')} className="status-btn">L</button>
-              <button onClick={() => handleStatus('H')} className="status-btn">H</button>
+              <input
+                type="text"
+                value={status === 'L' ? 'LEAVE' : status === 'H' ? 'HOLIDAY' : inputValue}
+                placeholder="0.00"
+                readOnly={status !== ''}
+                onKeyDown={handleKeyDown}
+                onChange={handleChange}
+                onBlur={handleBlurOrEnter}
+                onKeyPress={handleBlurOrEnter}
+                style={{ borderColor: 'grey' }}
+              />
+              {status === '' && (
+                <>
+                  <button onClick={() => handleStatus('L')} className="status-btn">L</button>
+                  <button onClick={() => handleStatus('H')} className="status-btn">H</button>
+                </>
+              )}
             </>
           )}
         </div>

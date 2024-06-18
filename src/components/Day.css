@@ -1,25 +1,46 @@
-.input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.header {
+  margin: 20px;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+
+.day {
+  border: 1px solid black;
+}
+
+.day-header {
+  background-color: lightgrey;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.day-body {
+  background-color: white;
+  padding: 5px;
+}
+
+.summary {
+  margin-top: 20px;
 }
 
 input {
-  width: 100%;
-  box-sizing: border-box;
+  width: 60px;
+  margin-right: 5px;
 }
 
-.status-btn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 30px;
-  border: none;
-  background: none;
-  cursor: pointer;
+button {
+  margin-right: 5px;
 }
 
-.status-btn + .status-btn {
-  right: 30px; /* Adjust based on button width */
+.total-hours {
+  padding: 5px;
 }

@@ -9,7 +9,7 @@
 
 .calendar {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   gap: 10px;
 }
 
@@ -39,4 +39,8 @@ input {
 
 button {
   margin-right: 5px;
+}
+
+.total-hours {
+  padding: 5px;
 }
