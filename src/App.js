@@ -44,7 +44,7 @@ const App = () => {
     }
 
     // Fill the remaining cells with the next month's days if needed
-    const totalCells = 35;
+    const totalCells = 40;
     let nextMonthDay = 1;
     while (daysArray.length < totalCells) {
       const date = new Date(nextMonthYear, nextMonth, nextMonthDay++);
@@ -52,7 +52,17 @@ const App = () => {
       daysArray.push(storedDay);
     }
 
-    return daysArray;
+    // Insert "Total Hours" entries after each Sunday
+    const daysWithTotals = [];
+    for (let i = 0; i < daysArray.length; i++) {
+      daysWithTotals.push(daysArray[i]);
+      if ((i + 1) % 7 === 0 && daysWithTotals.length < totalCells) {
+        daysWithTotals.push({ name: 'Total Hours', date: null, status: '', hours: calculateWeekHours(daysArray, i - 6, i + 1) });
+      }
+    }
+
+    // Ensure only 35 tiles are returned
+    return daysWithTotals.slice(0, totalCells);
   };
 
   const updateStatus = (date, newStatus, newHours) => {
@@ -86,17 +96,6 @@ const App = () => {
     }, 0);
   };
 
-  const renderDaysWithTotals = () => {
-    const daysWithTotals = [];
-    for (let i = 0; i < days.length; i++) {
-      daysWithTotals.push(days[i]);
-      if ((i + 1) % 7 === 0) {
-        daysWithTotals.push({ name: 'Total Hours', date: null, status: '', hours: calculateWeekHours(days, i - 6, i + 1) });
-      }
-    }
-    return daysWithTotals;
-  };
-
   const calculateWeekHours = (daysArray, start, end) => {
     const weekDays = daysArray.slice(start, end);
     const totalHours = weekDays.reduce((sum, day) => {
@@ -109,7 +108,7 @@ const App = () => {
   return (
     <div className="App">
       <Header year={year} month={month} setYear={setYear} setMonth={setMonth} />
-      <Calendar days={renderDaysWithTotals()} updateStatus={updateStatus} />
+      <Calendar days={days} updateStatus={updateStatus} />
       <Summary
         totalLeaves={calculateTotalLeaves()}
         totalHolidays={calculateTotalHolidays()}
