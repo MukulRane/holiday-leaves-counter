@@ -1,46 +1,168 @@
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
+  width: 1550px;
+  margin: 0 auto;
+  overflow-x: auto;
 }
 
 .header {
   margin: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.select-container1 {
+  margin-right: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.select-container2 {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+select {
+  width: 200px;
+  border: 1px solid lightgrey;
+  border-radius: 0;
+  padding: 5px;
+  color: grey;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+select:hover {
+  background-color: #f0f0f0;
+}
+
+.container {
+  border: 2px solid lightgray;
+  margin: 0px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.summary-container {
+  background-color: black;
+  color: white;
+  width: 100%;
+  padding: 10px 0px;
+  text-align: right;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.summary {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.summary p {
+  margin: 0 10px;
+  padding: 5px;
+}
+
+.calendar-container {
+  display: inline-block;
+  width: 100%;
 }
 
 .calendar {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  gap: 10px;
+  gap: 0;
+  padding: 0 10px;
+  padding-top: 30px;
+  padding-bottom: 50px;
 }
 
 .day {
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+  position: relative;
+  margin: 5px 0;
 }
 
 .day-header {
-  background-color: lightgrey;
+  background-color: rgb(237, 237, 237);
   font-weight: bold;
   padding: 5px;
 }
 
-.day-body {
-  background-color: white;
-  padding: 5px;
+.separator {
+  height: 1px;
+  background-color: lightgrey;
+  margin: 0;
 }
 
-.summary {
-  margin-top: 20px;
+.day-body {
+  background-color: white;
+  padding: 10px 10px 10px 10px;
+  position: relative;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100%;
 }
 
 input {
-  width: 60px;
-  margin-right: 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
 }
 
-button {
-  margin-right: 5px;
+.status-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #000;
+  color: #fff;
+  border: 1px solid rgb(255, 136, 0);
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-btn:first-of-type {
+  right: 35px;
 }
 
 .total-hours {
   padding: 5px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

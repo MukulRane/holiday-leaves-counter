@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Day.css';
 
 const Day = ({ day, updateStatus }) => {
   const [status, setStatus] = useState(day.status);
@@ -58,10 +57,11 @@ const Day = ({ day, updateStatus }) => {
 
   return (
     <div className="day">
-      <div className="day-header" style={{ backgroundColor: 'lightgrey', fontWeight: 'bold' }}>
+      <div className="day-header">
         {formatDateHeader()}
       </div>
-      <div className="day-body" style={{ backgroundColor: 'white' }}>
+      <div className="separator"></div> {/* Add separator here */}
+      <div className="day-body">
         <div className="input-wrapper">
           {day.name === 'Total Hours' ? (
             <div className="total-hours">{day.hours || '0.00'}</div>
@@ -76,7 +76,6 @@ const Day = ({ day, updateStatus }) => {
                 onChange={handleChange}
                 onBlur={handleBlurOrEnter}
                 onKeyPress={handleBlurOrEnter}
-                style={{ borderColor: 'grey' }}
               />
               {!isWeekend() && status === '' && (
                 <>

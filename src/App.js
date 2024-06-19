@@ -94,7 +94,7 @@ const App = () => {
         daysWithTotals.push({ name: 'Total Hours', date: null, status: '', hours: calculateWeekHours(days, i - 6, i + 1) });
       }
     }
-    return daysWithTotals.slice(0,40);
+    return daysWithTotals.slice(0, 40);
   };
 
   const calculateWeekHours = (daysArray, start, end) => {
@@ -109,12 +109,18 @@ const App = () => {
   return (
     <div className="App">
       <Header year={year} month={month} setYear={setYear} setMonth={setMonth} />
-      <Calendar days={renderDaysWithTotals()} updateStatus={updateStatus} />
-      <Summary
-        totalLeaves={calculateTotalLeaves()}
-        totalHolidays={calculateTotalHolidays()}
-        totalHours={calculateTotalHours()}
-      />
+      <div className="container">
+        <div className="summary-container">
+          <Summary
+            totalLeaves={calculateTotalLeaves()}
+            totalHolidays={calculateTotalHolidays()}
+            totalHours={calculateTotalHours()}
+          />
+        </div>
+        <div className="calendar-container">
+          <Calendar days={renderDaysWithTotals()} updateStatus={updateStatus} />
+        </div>
+      </div>
     </div>
   );
 };
